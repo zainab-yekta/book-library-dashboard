@@ -1,0 +1,20 @@
+.card-title {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.card-footer {
+  background-color: #f9f9f9;
+}
+
+.card.border-info {
+  border-left: 5px solid #0dcaf0;
+}
