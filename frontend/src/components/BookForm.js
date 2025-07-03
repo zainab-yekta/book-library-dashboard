@@ -17,8 +17,9 @@ const BookForm = ({ onBookAdded }) => {
       formData.append('author', author);
       if (pdf) formData.append('pdf', pdf);
 
+      const API = process.env.REACT_APP_BACKEND_URL;
       await axios.post(
-        'http://localhost:5000/api/books',
+        `${API}/api/books`,
         formData,
         {
           headers: {

@@ -52,19 +52,19 @@ Admins can:
 
 | Feature                          | Status  | Description                                                |
 | -------------------------------- | ------- | ---------------------------------------------------------- |
-| REST API Endpoints               | ✅ Done  | Standard CRUD & filtered endpoints                         |
-| Express.js Backend API           | ✅ Done  | Secure, structured endpoints                               |
-| Error Handling                   | ✅ Basic | Alerts/messages on form submissions                        |
-| Global Book Filter (Public)      | ✅ Done  | View public books via toggle                               |
-| Admin View User Submissions      | ✅ Done  | Separate table with read-only user book data               |
-| Dashboard Filtering (Admin/User) | ✅ Done  | Admin sees public/private filters, users see all/my/global |
-| Book Ownership Metadata          | ✅ Done  | Track who added which books                                |
+| REST API Endpoints               |  Done  | Standard CRUD & filtered endpoints                         |
+| Express.js Backend API           |  Done  | Secure, structured endpoints                               |
+| Error Handling                   |  Basic | Alerts/messages on form submissions                        |
+| Global Book Filter (Public)      |  Done  | View public books via toggle                               |
+| Admin View User Submissions      |  Done  | Separate table with read-only user book data               |
+| Dashboard Filtering (Admin/User) |  Done  | Admin sees public/private filters, users see all/my/global |
+| Book Ownership Metadata          |  Done  | Track who added which books                                |
 
 ###  In Progress / To Add
 
 | Feature                         | Status     | Notes                                                  |
 | ------------------------------- | ---------- | ------------------------------------------------------ |
-| Deployment (Frontend & Backend) |  Planned | Recommend: Vercel/Netlify (frontend), Render (backend) |
+| Deployment (Frontend & Backend) |  Planned | Vercel/Netlify (frontend), Render (backend) |
 | GitHub Actions CI/CD            | Planned | Automate deployment/test runs                          
 
 
@@ -117,7 +117,7 @@ book-library-dashboard/
 4.  Add loading spinners for fetch actions
 5.  Deploy frontend (Netlify) and backend (Render)
 6.  Add GitHub Actions workflow
-7.  Add unit tests for backend API (optional)
+7.  Add unit tests for backend API 
 
 ## 🧑‍💻 Author
 

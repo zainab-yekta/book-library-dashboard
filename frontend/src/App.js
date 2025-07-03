@@ -13,13 +13,15 @@ import PrivateAdminRoute from './components/PrivateAdminRoute';
 import { useUser } from './context/UserContext';
 import UnauthorizedPage from './pages/UnauthorizedPage';
 
+const API = process.env.REACT_APP_BACKEND_URL;
+
 function App() {
   const { setUser } = useUser();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      axios.get('http://localhost:5000/api/users/profile', {
+      axios.get(`${API}/api/users/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +35,7 @@ function App() {
         setUser(null);
       });
     }
-  },[]);
+  },[setUser]);
 
   return (
     <>

@@ -3,6 +3,8 @@ import axios from 'axios';
 import './BookList.css';
 import EditBookModal from './EditBookModal';
 
+const API = process.env.REACT_APP_BACKEND_URL;
+
 const BookList = ({ userId, filter }) => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState('');
@@ -18,12 +20,12 @@ const BookList = ({ userId, filter }) => {
         let res;
 
         if (filter === 'my') {
-          res = await axios.get(`http://localhost:5000/api/books/user/${userId}`, {
+          res = await axios.get(`${API}/api/books/user/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
         } else {
           // for all, public, private, global
-          res = await axios.get('http://localhost:5000/api/books', {
+          res = await axios.get(`${API}/api/books`, {
             headers: { Authorization: `Bearer ${token}` },
           });
         }
@@ -42,7 +44,7 @@ const BookList = ({ userId, filter }) => {
 
   const deleteBook = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/books/${id}`, {
+      await axios.delete(`${API}/api/books/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // refresh book list
@@ -109,7 +111,7 @@ const BookList = ({ userId, filter }) => {
                       {book.pdf && (
                         <div className="mt-2">
                           <a
-                            href={`http://localhost:5000/${book.pdf}`}
+                            href={`${API}/${book.pdf}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-sm btn-outline-secondary"
@@ -168,7 +170,7 @@ const BookList = ({ userId, filter }) => {
           setShowModal(false);
           // re-fetch books
           axios
-            .get('http://localhost:5000/api/books', {
+            .get(`${API}/api/books`, {
               headers: { Authorization: `Bearer ${token}` },
             })
             .then((res) => setBooks(res.data))

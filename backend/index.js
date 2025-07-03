@@ -12,7 +12,10 @@ connectDB();             // Connect to MongoDB
 const app = express();  // Create Express app
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://book-library-dashboard.vercel.app/'],
+  credentials: true
+}));
 app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/books', bookRoutes);

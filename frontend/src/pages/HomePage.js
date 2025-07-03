@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API = process.env.REACT_APP_BACKEND_URL;
+
 const HomePage = () => {
   const [publicBooks, setPublicBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,7 +14,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/books/public');
+        const res = await axios.get(`${API}/api/books/public`);
         setPublicBooks(res.data);
       } catch (error) {
         console.error('Error fetching public books:', error);
