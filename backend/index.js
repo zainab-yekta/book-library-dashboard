@@ -11,9 +11,19 @@ connectDB();             // Connect to MongoDB
 
 const app = express();  // Create Express app
 
+const allowedOrigins = [
+  'https://book-library-dashboard.vercel.app',
+  'https://book-library-dashboard-git-main-zeinab-ramezani-yektas-projects.vercel.app'
+];
+
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://book-library-dashboard.vercel.app/'],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
 app.use(express.json());
