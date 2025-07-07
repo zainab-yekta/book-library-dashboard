@@ -28,7 +28,7 @@ This is the **backend** for the Book Library Dashboard project, developed using 
 * Displaying global stats / controls for admin 
 * Admin only: change the filters to (Public Books, Private Books)
 
-## 📁 Folder Structure (Backend)
+## Folder Structure (Backend)
 
 ```
 backend/
@@ -55,7 +55,7 @@ backend/
 ├── seed.js
 ```
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 * **Node.js**
 * **Express.js**
@@ -63,7 +63,7 @@ backend/
 * **JWT** for authentication
 * **CORS**, **dotenv**, **morgan**
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Auth Routes `/api/auth`
 
@@ -83,20 +83,22 @@ backend/
 * `GET /books` — All books
 * `GET /submissions` — User submission stats
 
-## 🔒 Middlewares
+## Middlewares
 
 * `authMiddleware` — verifies JWT
 * `adminMiddleware` — checks for admin role
 * `errorHandler` — centralized error handling
 
-## 📦 Dev Tools
+## Dev Tools
 
 * **nodemon** for auto-restart
 * **eslint** for linting
 * **concurrently** for combined frontend/backend dev
 
-## 🔮 Future Features
+## Aditional Features Added
 
 * Add loading spinner and toast feedback
 * Deploy to Render (backend)
 * GitHub CI/CD with Actions
+
+# Trigger CI test
