@@ -4,7 +4,7 @@
 
 ### Backend Deployment Status (Render)
 
-[![Render](https://render.com/api/v1/badges/blue?service=book-library-dashboard&user=zainab-yekta)](https://book-library-dashboard.onrender.com)
+[![Render](https://render.com/api/v1/badges/blue?service=book-library-dashboard&user=Zeinab-Yekta)](https://book-library-dashboard.onrender.com)
 
 # Book Library Dashboard
 
