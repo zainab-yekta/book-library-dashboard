@@ -1,7 +1,10 @@
-### 🚀 Live Frontend Deployment (Vercel)
+### Live Frontend Deployment (Vercel)
 
 [![Frontend Deploy](https://vercel.com/button)](https://book-library-dashboard.vercel.app)
 
+### Backend Deployment Status (Render)
+
+[![Render](https://render.com/api/v1/badges/blue?service=book-library-dashboard&user=zainab-yekta)](https://book-library-dashboard.onrender.com)
 
 # Book Library Dashboard
 
@@ -65,11 +68,11 @@ Admins can:
 | Dashboard Filtering (Admin/User) |  Done  | Admin sees public/private filters, users see all/my/global |
 | Book Ownership Metadata          |  Done  | Track who added which books                                |
 
-###  In Progress / To Add
+###  In Progress / To Add (Done)
 
 | Feature                         | Status     | Notes                                                  |
 | ------------------------------- | ---------- | ------------------------------------------------------ |
-| Deployment (Frontend & Backend) |  Planned | Vercel/Netlify (frontend), Render (backend) |
+| Deployment (Frontend & Backend) |  Planned | Vercel (frontend), Render (backend) |
 | GitHub Actions CI/CD            | Planned | Automate deployment/test runs                          
 
 
@@ -96,33 +99,28 @@ book-library-dashboard/
 
 ###  Recommended Hosting
 
-* **Frontend**: Vercel or Netlify
+* **Frontend**: Vercel 
 
   * Easy GitHub integration
   * Auto-deploy from main branch
-* **Backend**: Render or Railway
+* **Backend**: Render 
 
   * MongoDB URI support
   * Free tier available
 
-##  CI/CD with GitHub Actions (Planned)
+##  CI/CD with GitHub Actions
 
 * Setup `.github/workflows/deploy.yml` file
 * Configure:
 
+  * Add GitHub Actions workflow
   * Linting
   * Test commands 
-  * Auto-deploy to Netlify/Vercel (frontend)
+  * Auto-deploy to Vercel (frontend)
 
 ##  Roadmap / TODOs
 
-1.  Implement role-based dashboard
-2.  Separate admin/user book views
-3.  Add public/private filter logic
-4.  Add loading spinners for fetch actions
-5.  Deploy frontend (Netlify) and backend (Render)
-6.  Add GitHub Actions workflow
-7.  Add unit tests for backend API 
+  Add unit tests for backend API 
 
 ## 🧑‍💻 Author
 
