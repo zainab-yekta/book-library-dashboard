@@ -6,6 +6,14 @@
 
 [![Render](https://render.com/api/v1/badges/blue?service=book-library-dashboard&user=Zeinab-Yekta)](https://book-library-dashboard.onrender.com)
 
+### Live Demo Section
+
+| Type                                  | URL                                                            |
+| ------------------------------------- | -------------------------------------------------------------- |
+|  **Frontend (Live Site)**            | `https://book-library-dashboard.vercel.app/`                   |
+|  **Backend API (Testable Endpoint)** | `https://book-library-dashboard.onrender.com/api/books/public` |
+
+
 # Book Library Dashboard
 
 A full-stack book management dashboard built with **React**, **Node.js**, **Express**, and **MongoDB**, featuring role-based access (Admin & User), book inventory tracking, and dynamic filtering with public/private visibility.
@@ -122,7 +130,34 @@ book-library-dashboard/
 
   Add unit tests for backend API 
 
-## 🧑‍💻 Author
+## How to Run the Project Locally
+
+# 1. Clone the repository
+git clone https://github.com/yourusername/book-library-dashboard.git
+cd book-library-dashboard
+
+# 2. Setup Backend
+cd backend
+npm install
+
+# Create a .env file inside backend folder with:
+# MONGO_URI=your_mongodb_uri
+# JWT_SECRET=your_jwt_secret
+# NODE_ENV=development
+# PORT=5000
+
+npm run dev  # Or: npm start
+
+# 3. Setup Frontend
+cd ../frontend
+npm install
+
+# Create a .env file inside frontend folder with:
+# REACT_APP_BACKEND_URL=http://localhost:5000
+
+npm start
+
+## Author
 
 Built by **Zeinab Ramezani Yekta** — Full-stack Developer and Researcher.
 
