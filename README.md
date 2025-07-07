@@ -132,28 +132,28 @@ book-library-dashboard/
 
 ## How to Run the Project Locally
 
-# 1. Clone the repository
+### 1. Clone the repository
 git clone https://github.com/yourusername/book-library-dashboard.git
 cd book-library-dashboard
 
-# 2. Setup Backend
+### 2. Setup Backend
 cd backend
 npm install
 
-# Create a .env file inside backend folder with:
-# MONGO_URI=your_mongodb_uri
-# JWT_SECRET=your_jwt_secret
-# NODE_ENV=development
-# PORT=5000
+### Create a .env file inside backend folder with:
+### MONGO_URI=your_mongodb_uri
+### JWT_SECRET=your_jwt_secret
+### NODE_ENV=development
+### PORT=5000
 
 npm run dev  # Or: npm start
 
-# 3. Setup Frontend
+## 3. Setup Frontend
 cd ../frontend
 npm install
 
-# Create a .env file inside frontend folder with:
-# REACT_APP_BACKEND_URL=http://localhost:5000
+### Create a .env file inside frontend folder with:
+### REACT_APP_BACKEND_URL=http://localhost:5000
 
 npm start
 
