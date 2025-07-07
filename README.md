@@ -1,3 +1,8 @@
+### 🚀 Live Frontend Deployment (Vercel)
+
+[![Frontend Deploy](https://vercel.com/button)](https://book-library-dashboard.vercel.app)
+
+
 # Book Library Dashboard
 
 A full-stack book management dashboard built with **React**, **Node.js**, **Express**, and **MongoDB**, featuring role-based access (Admin & User), book inventory tracking, and dynamic filtering with public/private visibility.
