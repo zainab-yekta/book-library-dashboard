@@ -26,7 +26,7 @@ This is the **backend** for the Book Library Dashboard project, developed using 
 * Separate admin routes using `adminRoutes.js`
 * Allow admin users to manage global books
 * Displaying global stats / controls for admin 
-* Admin only: change the filters to (Public Books, Private Books)
+* Admin only: change the Add, Delete, Edite and Filters to (Public Books, Private Books)
 
 ## Folder Structure (Backend)
 
@@ -101,4 +101,33 @@ backend/
 * Deploy to Render (backend)
 * GitHub CI/CD with Actions
 
-# Trigger CI test
+## CI/CD with GitHub Actions
+
+The project uses GitHub Actions for Continuous Integration & Deployment:
+
+Backend CI workflow runs tests on every commit.
+
+Backend auto-deploys to Render via a deploy hook.
+
+Frontend auto-deploys to Vercel on every push to main.
+
+This ensures code is automatically tested and deployed after every update.
+
+## Testing
+
+This project includes both **manual and automated testing**:
+
+### Postman API Testing
+
+All backend routes (login, register, book CRUD) were manually tested using Postman to ensure proper functionality and error handling.
+
+### Jest Unit Testing
+Basic unit tests are written with **Jest** and **Supertest** for key routes:
+
+- `/api/books/public` – ensure it returns public books
+- `/api/users/login` – invalid login returns 401
+- Protected routes – unauthenticated access is blocked
+
+To run tests:
+```bash
+npm test
