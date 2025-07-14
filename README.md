@@ -31,7 +31,9 @@ This project allows users to:
 Admins can:
 
 * View all books (including user-submitted)
+* Add books and publish it as public
 * Manage global visibility (public/private)
+* Edit/delete public books
 * Track user-submitted books with metadata
 
 ##  Tech Stack Used
@@ -61,6 +63,7 @@ Admins can:
 * JWT-based secure login/register
 * Role-based access: `admin` vs `user`
 * Auth token stored in `localStorage`
+* Auth token saved in 'MangoDB' and cheked before login
 
 ##  Features
 
@@ -70,19 +73,18 @@ Admins can:
 | -------------------------------- | ------- | ---------------------------------------------------------- |
 | REST API Endpoints               |  Done  | Standard CRUD & filtered endpoints                         |
 | Express.js Backend API           |  Done  | Secure, structured endpoints                               |
-| Error Handling                   |  Basic | Alerts/messages on form submissions                        |
+| Error Handling                   |  Done | Alerts/messages on form submissions                        |
 | Global Book Filter (Public)      |  Done  | View public books via toggle                               |
 | Admin View User Submissions      |  Done  | Separate table with read-only user book data               |
 | Dashboard Filtering (Admin/User) |  Done  | Admin sees public/private filters, users see all/my/global |
 | Book Ownership Metadata          |  Done  | Track who added which books                                |
 
-###  In Progress / To Add (Done)
+###  Deployment
 
 | Feature                         | Status     | Notes                                                  |
 | ------------------------------- | ---------- | ------------------------------------------------------ |
 | Deployment (Frontend & Backend) |  Planned | Vercel (frontend), Render (backend) |
 | GitHub Actions CI/CD            | Planned | Automate deployment/test runs                          
-
 
 ##  Folder Structure
 
@@ -102,6 +104,25 @@ book-library-dashboard/
 │   │   └── App.js
 │   └── public/
 ```
+
+## Testing
+
+This project includes both **manual and automated testing**:
+
+### Postman API Testing
+
+All backend routes (login, register, book CRUD) were manually tested using Postman to ensure proper functionality and error handling.
+
+### Jest Unit Testing
+Basic unit tests are written with **Jest** and **Supertest** for key routes:
+
+- `/api/books/public` – ensure it returns public books
+- `/api/users/login` – invalid login returns 401
+- Protected routes – unauthenticated access is blocked
+
+To run tests:
+``bash
+npm test
 
 ##  Deployment Plan
 
@@ -125,10 +146,7 @@ book-library-dashboard/
   * Linting
   * Test commands 
   * Auto-deploy to Vercel (frontend)
-
-##  Roadmap / TODOs
-
-  Add unit tests for backend API 
+  * Both are connected via environment variables, and data is stored in MongoDB Atlas.
 
 ## How to Run the Project Locally
 
@@ -141,14 +159,14 @@ cd backend
 npm install
 
 ### Create a .env file inside backend folder with:
-### MONGO_URI=your_mongodb_uri
-### JWT_SECRET=your_jwt_secret
-### NODE_ENV=development
+### MONGO_URI=mongodb_uri
+### JWT_SECRET=jwt_secret
+### NODE_ENV=Production
 ### PORT=5000
 
 npm run dev  # Or: npm start
 
-## 3. Setup Frontend
+### 3. Setup Frontend
 cd ../frontend
 npm install
 

@@ -29,3 +29,10 @@ jobs:
 
       - name: Run build
         run: npm run build
+
+      - name: Trigger Vercel Deploy
+        run: |
+          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
+
+      - name: Run Linter
+        run: npm run lint
