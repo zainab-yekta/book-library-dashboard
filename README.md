@@ -178,7 +178,7 @@ npm test
 ## How to Run the Project Locally
 
 ### 1. Clone the repository
-git clone https://github.com/yourusername/book-library-dashboard.git
+git clone https://github.com/zainab-yekta/book-library-dashboard.git
 cd book-library-dashboard
 
 ### 2. Setup Backend
