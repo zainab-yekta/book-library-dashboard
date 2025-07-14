@@ -50,6 +50,10 @@ backend/
 │   ├── userRoutes.js
 │   ├── bookRoutes.js
 │   └── adminRoutes.js
+├── tests/
+│   └── bookRoutes.test.js
+│   └── userRoutes.test.js
+├── uploads/
 ├── .env
 ├── index.js
 ├── seed.js

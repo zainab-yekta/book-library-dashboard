@@ -83,26 +83,53 @@ Admins can:
 
 | Feature                         | Status     | Notes                                                  |
 | ------------------------------- | ---------- | ------------------------------------------------------ |
-| Deployment (Frontend & Backend) |  Planned | Vercel (frontend), Render (backend) |
-| GitHub Actions CI/CD            | Planned | Automate deployment/test runs                          
+| Deployment (Frontend & Backend) |  Done | Vercel (frontend), Render (backend) |
+| GitHub Actions CI/CD            | Done | Automate deployment/test runs                          
 
 ##  Folder Structure
 
 ```
 book-library-dashboard/
+├── .github/
+│   ├── workflows/
+│   │   ├── backend-ci.yml
+│   │   ├── deploy-backend.yml
+│   │   ├── frontend-ci.yml
 ├── backend/
-│   ├── models/
-│   ├── routes/
+│   ├── config/
 │   ├── controllers/
+│   ├── data/
+│   ├── middlewere/
+│   ├── models/
+│   ├── node_modules/
+│   ├── routes/
+│   ├── tests/
+│   ├── uploads/
+│   ├── .env/
 │   └── index.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   ├── seed.js
 ├── frontend/
+│   ├── node_modules/
+│   ├── public/
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   ├── context/
+│   │   ├── images/
 │   │   ├── utils/
 │   │   └── App.js
-│   └── public/
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   ├── index.js
+│   ├── .env
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── pakage.json
+│   ├── README.md
+├── README.md
 ```
 
 ## Testing
@@ -124,9 +151,9 @@ To run tests:
 ``bash
 npm test
 
-##  Deployment Plan
+##  Deployment 
 
-###  Recommended Hosting
+### Hosting
 
 * **Frontend**: Vercel 
 

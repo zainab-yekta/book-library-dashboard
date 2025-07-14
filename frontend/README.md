@@ -79,6 +79,7 @@ frontend/
 │   ├── images/
 │   ├── pages/
 │   │   ├── DashboardPage.js
+│   │   ├── AboutUs.js
 │   │   ├── AdminDashboardPage.js
 │   │   ├── HomePage.js
 │   │   └── LoginPage.js
