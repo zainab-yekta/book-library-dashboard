@@ -1,209 +1,164 @@
-### Live Frontend Deployment (Vercel)
+# Book Library Dashboard
+
+A full-stack library management platform with role-based access for administrators and users, built with React, Node.js, Express, and MongoDB.
+
+### Live Demo
+
+| Type | URL |
+|------|-----|
+| **Frontend (Live Site)** | [book-library-dashboard.vercel.app](https://book-library-dashboard.vercel.app/) |
+| **Backend API** | [book-library-dashboard.onrender.com/api/books/public](https://book-library-dashboard.onrender.com/api/books/public) |
 
 [![Frontend Deploy](https://vercel.com/button)](https://book-library-dashboard.vercel.app)
 
-### Backend Deployment Status (Render)
+---
 
-[![Render](https://render.com/api/v1/badges/blue?service=book-library-dashboard&user=Zeinab-Yekta)](https://book-library-dashboard.onrender.com)
+## Project Overview
 
-### Live Demo Section
+Users can register, log in, add personal books, browse public books, and manage their own entries. Admins have extended control over global book visibility, user submissions, and platform-wide inventory.
 
-| Type                                  | URL                                                            |
-| ------------------------------------- | -------------------------------------------------------------- |
-|  **Frontend (Live Site)**            | `https://book-library-dashboard.vercel.app/`                   |
-|  **Backend API (Testable Endpoint)** | `https://book-library-dashboard.onrender.com/api/books/public` |
+---
 
+## Tech Stack
 
-# Book Library Dashboard
+### Frontend
+- **React.js** — component-based UI
+- **React Router DOM** — client-side navigation
+- **React Bootstrap** — responsive styling
+- **Axios** — API communication
 
-A full-stack book management dashboard built with **React**, **Node.js**, **Express**, and **MongoDB**, featuring role-based access (Admin & User), book inventory tracking, and dynamic filtering with public/private visibility.
+### Backend
+- **Node.js + Express.js** — RESTful API server
+- **MongoDB + Mongoose** — database and schema modeling
+- **JWT (jsonwebtoken)** — stateless authentication
+- **bcryptjs** — password hashing
 
-##  Project Overview
+### Dev & DevOps
+- **Jest + Supertest** — automated backend testing
+- **GitHub Actions** — CI/CD pipelines (lint, test, deploy)
+- **Vercel** — frontend hosting
+- **Render** — backend hosting
+- **Postman** — manual API validation
 
-This project allows users to:
+---
 
-* Register/Login (JWT-authenticated)
-* Add their personal books
-* See global (public) books
-* Edit/delete their own books
-* View published/unpublished book lists
+## Authentication
 
-Admins can:
+- JWT-based login and registration
+- Role-based access control: `admin` vs `user`
+- Auth token stored in `localStorage` and validated server-side on every protected request
 
-* View all books (including user-submitted)
-* Add books and publish it as public
-* Manage global visibility (public/private)
-* Edit/delete public books
-* Track user-submitted books with metadata
+---
 
-##  Tech Stack Used
+## Features
 
-###  Frontend
+| Feature | Status | Description |
+|---------|--------|-------------|
+| REST API Endpoints | ✅ Done | Full CRUD and filtered endpoints |
+| JWT Auth & Role-Based Access | ✅ Done | Admin and user roles with protected routes |
+| Global Book Filter | ✅ Done | Toggle between public and private books |
+| Admin User Submission View | ✅ Done | Separate read-only table for user-submitted books |
+| Dashboard Filtering | ✅ Done | Admins see public/private; users see all/my/global |
+| Book Ownership Metadata | ✅ Done | Tracks which user added each book |
+| Automated Testing | ✅ Done | Jest + Supertest for key API routes |
+| CI/CD Pipeline | ✅ Done | GitHub Actions for lint, test, and auto-deploy |
 
-* **React.js**
-* **React Router DOM** – navigation
-* **React Bootstrap** – UI styling
-* **Axios** – API requests
+---
 
-###  Backend
+## Testing
 
-* **Node.js** with **Express.js** – REST API
-* **MongoDB + Mongoose** – Database & models
-* **JWT (jsonwebtoken)** – Authentication
-* **bcryptjs** – Password hashing
+### Automated (Jest + Supertest)
+Key backend routes tested:
+- `GET /api/books/public` — returns public book list
+- `POST /api/users/login` — invalid credentials return 401
+- Protected routes — unauthenticated requests are blocked
 
-###  Dev Tools
+```bash
+cd backend
+npm test
+```
 
-* **Nodemon** – Auto restart backend
-* **ESLint** – Linting
-* **GitHub** – Version control
+### Manual (Postman)
+All CRUD routes (login, register, books) validated via Postman collections.
 
-##  Authentication System
+---
 
-* JWT-based secure login/register
-* Role-based access: `admin` vs `user`
-* Auth token stored in `localStorage`
-* Auth token saved in 'MangoDB' and cheked before login
-
-##  Features
-
-###  Implemented Features
-
-| Feature                          | Status  | Description                                                |
-| -------------------------------- | ------- | ---------------------------------------------------------- |
-| REST API Endpoints               |  Done  | Standard CRUD & filtered endpoints                         |
-| Express.js Backend API           |  Done  | Secure, structured endpoints                               |
-| Error Handling                   |  Done | Alerts/messages on form submissions                        |
-| Global Book Filter (Public)      |  Done  | View public books via toggle                               |
-| Admin View User Submissions      |  Done  | Separate table with read-only user book data               |
-| Dashboard Filtering (Admin/User) |  Done  | Admin sees public/private filters, users see all/my/global |
-| Book Ownership Metadata          |  Done  | Track who added which books                                |
-
-###  Deployment
-
-| Feature                         | Status     | Notes                                                  |
-| ------------------------------- | ---------- | ------------------------------------------------------ |
-| Deployment (Frontend & Backend) |  Done | Vercel (frontend), Render (backend) |
-| GitHub Actions CI/CD            | Done | Automate deployment/test runs                          
-
-##  Folder Structure
+## Folder Structure
 
 ```
 book-library-dashboard/
 ├── .github/
-│   ├── workflows/
-│   │   ├── backend-ci.yml
-│   │   ├── deploy-backend.yml
-│   │   ├── frontend-ci.yml
+│   └── workflows/
+│       ├── backend-ci.yml
+│       ├── deploy-backend.yml
+│       └── frontend-ci.yml
 ├── backend/
 │   ├── config/
 │   ├── controllers/
-│   ├── data/
-│   ├── middlewere/
+│   ├── middleware/
 │   ├── models/
-│   ├── node_modules/
 │   ├── routes/
 │   ├── tests/
-│   ├── uploads/
-│   ├── .env/
-│   └── index.js
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── README.md
+│   ├── index.js
 │   ├── seed.js
+│   └── package.json
 ├── frontend/
-│   ├── node_modules/
 │   ├── public/
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   ├── context/
-│   │   ├── images/
-│   │   ├── utils/
 │   │   └── App.js
-│   │   ├── App.css
-│   │   ├── index.css
-│   │   ├── index.js
-│   ├── .env
-│   ├── .gitignore
-│   ├── package-lock.json
-│   ├── pakage.json
-│   ├── README.md
-├── README.md
+│   └── package.json
+└── README.md
 ```
 
-## Testing
+---
 
-This project includes both **manual and automated testing**:
-
-### Postman API Testing
-
-All backend routes (login, register, book CRUD) were manually tested using Postman to ensure proper functionality and error handling.
-
-### Jest Unit Testing
-Basic unit tests are written with **Jest** and **Supertest** for key routes:
-
-- `/api/books/public` – ensure it returns public books
-- `/api/users/login` – invalid login returns 401
-- Protected routes – unauthenticated access is blocked
-
-To run tests:
-``bash
-npm test
-
-##  Deployment 
-
-### Hosting
-
-* **Frontend**: Vercel 
-
-  * Easy GitHub integration
-  * Auto-deploy from main branch
-* **Backend**: Render 
-
-  * MongoDB URI support
-  * Free tier available
-
-##  CI/CD with GitHub Actions
-
-* Setup `.github/workflows/deploy.yml` file
-* Configure:
-
-  * Add GitHub Actions workflow
-  * Linting
-  * Test commands 
-  * Auto-deploy to Vercel (frontend)
-  * Both are connected via environment variables, and data is stored in MongoDB Atlas.
-
-## How to Run the Project Locally
+## Run Locally
 
 ### 1. Clone the repository
-git clone https://github.com/yourusername/book-library-dashboard.git
+```bash
+git clone https://github.com/zainab-yekta/book-library-dashboard.git
 cd book-library-dashboard
+```
 
-### 2. Setup Backend
+### 2. Backend setup
+```bash
 cd backend
 npm install
+```
 
-### Create a .env file inside backend folder with:
-### MONGO_URI=mongodb_uri
-### JWT_SECRET=jwt_secret
-### NODE_ENV=Production
-### PORT=5000
+Create a `.env` file inside `/backend`:
+```
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+NODE_ENV=development
+PORT=5000
+```
 
-npm run dev  # Or: npm start
+```bash
+npm run dev
+```
 
-### 3. Setup Frontend
+### 3. Frontend setup
+```bash
 cd ../frontend
 npm install
+```
 
-### Create a .env file inside frontend folder with:
-### REACT_APP_BACKEND_URL=http://localhost:5000
+Create a `.env` file inside `/frontend`:
+```
+REACT_APP_BACKEND_URL=http://localhost:5000
+```
 
+```bash
 npm start
+```
+
+---
 
 ## Author
 
-Built by **Zeinab Ramezani Yekta** — Full-stack Developer and Researcher.
-
-
+Built by **Zeinab Ramezani Yekta** — Full-Stack Developer  
+[LinkedIn](https://linkedin.com/in/zeinab-ramezani) · [GitHub](https://github.com/zainab-yekta)
