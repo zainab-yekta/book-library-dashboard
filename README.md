@@ -36,6 +36,7 @@ Users can register, log in, add personal books, browse public books, and manage 
 ### Dev & DevOps
 - **Jest + Supertest** — automated backend testing
 - **GitHub Actions** — CI/CD pipelines (lint, test, deploy)
+- **Docker + Docker Compose** — containerized local development
 - **Vercel** — frontend hosting
 - **Render** — backend hosting
 - **Postman** — manual API validation
@@ -99,6 +100,7 @@ book-library-dashboard/
 │   ├── models/
 │   ├── routes/
 │   ├── tests/
+│   ├── Dockerfile
 │   ├── index.js
 │   ├── seed.js
 │   └── package.json
@@ -109,7 +111,9 @@ book-library-dashboard/
 │   │   ├── pages/
 │   │   ├── context/
 │   │   └── App.js
+│   ├── Dockerfile
 │   └── package.json
+├── docker-compose.yml
 └── README.md
 ```
 
