@@ -80,13 +80,8 @@ const deleteBook = async (req, res) => {
 
 const updateBook = async (req, res) => {
   try {
-    console.log('Book ID from URL:', req.params.id);
     const book = await Book.findById(req.params.id);
     if (!book) return res.status(404).json({ message: 'Book not found' });
-
-    console.log('Book:', book);
-    console.log('Request body:', req.body);
-    console.log('User role:', req.user.role);
 
     // Allow only the owner or admin to edit
     if (book.user && book.user.toString() !== req.user.id && req.user.role !== 'admin') {

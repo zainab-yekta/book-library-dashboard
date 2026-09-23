@@ -2,14 +2,16 @@
 
 Rough list of what would make this project stronger, grouped by how much effort each one takes. Pick what fits the time you have, none of this needs to happen at once.
 
-## Quick wins
+## Quick wins (done)
 
-- Lock down CORS to the actual deployed frontend origins instead of allowing any origin.
-- Require `adminOnly` (not just `protect`) on `/api/admin/stats`.
-- Remove the unused `createBook` in `bookController.js`, or actually use it and delete the inline duplicate in the route.
-- Clean out the leftover `console.log` calls and commented-out code.
-- Add a `.env.example` file for both `frontend` and `backend` so a new setup doesn't require guessing variable names.
-- Update the backend README so it matches what the code actually does.
+These were small enough to just fix directly rather than leave as a suggestion:
+
+- CORS is now restricted to the deployed frontend origins (plus `localhost:3000` for local dev) instead of allowing any origin.
+- `/api/admin/stats` now requires `adminOnly`, not just `protect`.
+- The duplicate inline book-creation logic in `bookRoutes.js` is gone, the route now calls the existing `createBook` controller.
+- Leftover `console.log` calls and commented-out dead code are cleaned up across the backend and the frontend pages.
+- Added `.env.example` for both `frontend` and `backend`.
+- Updated the backend README so its routes and middleware list match the actual code.
 
 ## Testing
 

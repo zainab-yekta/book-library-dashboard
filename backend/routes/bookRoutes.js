@@ -4,13 +4,13 @@ const express = require('express');
 const router = express.Router();
 const {
   getBooks,
+  createBook,
   deleteBook,
   updateBook,
   getPublicBooks,
   getBooksByUser,
 } = require('../controllers/bookController');
 const { protect } = require('../middleware/authMiddleware');
-const Book = require('../models/Book'); // ✅ Needed if using inline book creation
 
 // 🔧 Setup multer for file storage
 const storage = multer.diskStorage({
@@ -34,25 +34,7 @@ router.get('/user/:userId', protect, getBooksByUser);
 router.get('/', protect, getBooks);
 
 // ✅ Create a new book (with optional PDF upload)
-router.post('/', protect, upload.single('pdf'), async (req, res) => {
-  try {
-    const { title, author } = req.body;
-    const pdfPath = req.file ? req.file.path : null;
-
-    const newBook = new Book({
-      title,
-      author,
-      user: req.user.id,
-      pdf: pdfPath,
-    });
-
-    await newBook.save();
-    res.status(201).json(newBook);
-  } catch (err) {
-    console.error('Failed to add book:', err);
-    res.status(500).json({ message: 'Failed to add book' });
-  }
-});
+router.post('/', protect, upload.single('pdf'), createBook);
 
 // ✅ Update and delete by ID
 router

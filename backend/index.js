@@ -13,11 +13,12 @@ const app = express();  // Create Express app
 
 const allowedOrigins = [
   'https://book-library-dashboard.vercel.app',
-  'https://book-library-dashboard-git-main-zeinab-ramezani-yektas-projects.vercel.app'
+  'https://book-library-dashboard-git-main-zeinab-ramezani-yektas-projects.vercel.app',
+  'http://localhost:3000'
 ];
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/books', bookRoutes);

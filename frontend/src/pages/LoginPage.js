@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
-//import axios from 'axios';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -26,13 +25,7 @@ const LoginPage = () => {
       const token = res.data.token;
       localStorage.setItem('token', token);
       setMessage('Login successful!');
-      const userRes = await api.get('/users/profile'
-        //{
-       // headers: {
-       //   Authorization: `Bearer ${token}`
-       // }
-     // }
-      );
+      const userRes = await api.get('/users/profile');
       setUser(userRes.data);
       navigate('/dashboard');
     } catch (err) {

@@ -1,7 +1,3 @@
-//import express from 'express';
-//import { getUserProfile } from '../controllers/userController.js';
-//import { protect } from '../middleware/authMiddleware.js';
-
 const express = require('express');
 const router = express.Router();
 const { registerUser, loginUser, getUserProfile } = require('../controllers/userController');

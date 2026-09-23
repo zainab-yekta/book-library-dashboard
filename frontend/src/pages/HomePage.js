@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-//import api from '../utils/api';
 
 const API = process.env.REACT_APP_BACKEND_URL;
 
@@ -37,10 +36,6 @@ const HomePage = () => {
       navigate('/dashboard'); 
     }
   };
-
-  useEffect(() => {
-  console.log("Loaded Books:", publicBooks);
-}, [publicBooks]);
 
   return (
     <div className="container mt-4">
@@ -102,11 +97,9 @@ const HomePage = () => {
             <div key={book._id} className="col-md-4 mb-4">
               <div className="card h-100 shadow-sm">
                 <img
-                  //src={book.coverImage || "https://via.placeholder.com/150x220?text=No+Image"}
-                 src={book.coverImage && book.coverImage.startsWith('http') ? book.coverImage : require('../images/bookcover.jpg')}
+                  src={book.coverImage && book.coverImage.startsWith('http') ? book.coverImage : require('../images/bookcover.jpg')}
                   className="card-img-top"
                   alt="Book Cover"
-                  //style={{ objectFit: 'cover', height: '220px' }}
                   style={{ objectFit: 'cover', height: '220px', width: '100%' }}
                 />
                 <div className="card-body">

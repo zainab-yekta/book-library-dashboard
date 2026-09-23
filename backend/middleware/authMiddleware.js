@@ -17,7 +17,6 @@ const protect = async (req, res, next) => {
 
       // Get user from the token (without password)
       req.user = await User.findById(decoded.id).select('-password');
-      console.log('Authenticated user:', req.user);
 
       next();
     } catch (error) {

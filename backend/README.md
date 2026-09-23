@@ -65,39 +65,39 @@ backend/
 * **Express.js**
 * **MongoDB** with **Mongoose**
 * **JWT** for authentication
-* **CORS**, **dotenv**, **morgan**
+* **CORS**, **dotenv**
 
 ## API Endpoints
 
-### Auth Routes `/api/auth`
+### User Routes `/api/users`
 
 * `POST /register`
 * `POST /login`
+* `GET /profile`
 
 ### Book Routes `/api/books`
 
-* `GET /` — All books
+* `GET /public` — Public books (no login required)
+* `GET /` — All books visible to the current user
 * `GET /user/:userId` — User's own books
 * `POST /` — Add book
-* `PUT /:bookId` — Update book
-* `DELETE /:bookId` — Delete book
+* `PUT /:id` — Update book
+* `DELETE /:id` — Delete book
 
 ### Admin Routes `/api/admin`
 
-* `GET /books` — All books
-* `GET /submissions` — User submission stats
+* `GET /stats` — Book and user counts
+* `GET /books` — All books, with owner info
 
 ## Middlewares
 
-* `authMiddleware` — verifies JWT
-* `adminMiddleware` — checks for admin role
-* `errorHandler` — centralized error handling
+* `protect` — verifies JWT
+* `adminOnly` — checks for admin role
 
 ## Dev Tools
 
 * **nodemon** for auto-restart
 * **eslint** for linting
-* **concurrently** for combined frontend/backend dev
 
 ## Aditional Features Added
 

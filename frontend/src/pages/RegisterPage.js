@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import api from '../utils/api';
-//import axios from 'axios';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -23,10 +22,9 @@ const RegisterPage = () => {
     setMessage('');
 
     try {
-      const response = await api.post('/users/register', formData);
+      await api.post('/users/register', formData);
       setMessage('User registered successfully! You can now log in.');
       setFormData({ name: '', email: '', password: '' });
-      console.log('User registered:', response.data);
     } catch (error) {
       setMessage(error.response?.data?.message || 'Registration failed');
     }
