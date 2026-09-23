@@ -33,9 +33,3 @@ These were small enough to just fix directly rather than leave as a suggestion:
 - **Done:** added `docker-compose.yml` plus a `Dockerfile` in `frontend/` and `backend/`, so `docker compose up` starts MongoDB, the backend, and the frontend together, no local Node/Mongo install needed. See the "Running with Docker" section in the main README.
 - **Done:** CI now actually gates deploys. `backend-ci.yml` runs the test suite (it only ran lint before), and `deploy-backend.yml` triggers off that workflow succeeding instead of firing on every push to main regardless. `frontend-ci.yml` now runs lint before the Vercel deploy step instead of after, and the deploy step only fires on `main`. The frontend also had no `lint` script at all, added one, so that gate was previously a no-op.
 - **Deliberately skipped for now:** migrating off Create React App to Vite, and adding TypeScript. Both are real migrations rather than small fixes (env variable renames, config swaps, or a gradual file-by-file conversion), so they're left here as future options rather than done alongside the small stuff.
-
-## For the portfolio presentation specifically
-
-- A short architecture diagram (frontend, backend, database, how auth flows between them) goes a long way for anyone skimming the repo.
-- A "known limitations" section in the main README, listing things like the current test coverage or the CORS setup, reads as self-aware rather than incomplete. Recruiters and other engineers tend to trust a project more when it's honest about its own gaps.
-- A short demo GIF or video embedded in the README, since not everyone will spin up the project locally to see it in action.

@@ -11,6 +11,8 @@ A full-stack library management platform with role-based access for administrato
 
 [![Frontend Deploy](https://vercel.com/button)](https://book-library-dashboard.vercel.app)
 
+![Preview](mockups/preview.gif)
+
 ---
 
 ## Project Overview
@@ -40,6 +42,12 @@ Users can register, log in, add personal books, browse public books, and manage 
 - **Vercel** — frontend hosting
 - **Render** — backend hosting
 - **Postman** — manual API validation
+
+---
+
+## Architecture
+
+![Architecture diagram](docs/architecture.svg)
 
 ---
 
@@ -172,6 +180,17 @@ docker compose up
 ```
 
 This starts MongoDB, the backend (port 5000), and the frontend (port 3000) together. Code changes on your machine are picked up automatically. Stop everything with `docker compose down`.
+
+---
+
+## Known Limitations
+
+This project is still evolving, a few gaps worth knowing about:
+
+- Automated test coverage is light: a handful of Jest/Supertest cases on the backend, none yet on the frontend.
+- Backend tests currently run against the same database as everything else rather than an isolated test database.
+- No rate limiting or centralized error handling on the API yet.
+- Still built with Create React App; a move to Vite (and possibly TypeScript) is on the radar.
 
 ---
 

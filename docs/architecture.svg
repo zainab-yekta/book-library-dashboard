@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="900" height="380" fill="#ffffff"/>
+
+  <!-- Frontend -->
+  <rect x="30" y="140" width="220" height="100" rx="10" fill="#f8f9fa" stroke="#212529" stroke-width="2"/>
+  <text x="140" y="180" text-anchor="middle" font-size="16" font-weight="bold" fill="#212529">React Frontend</text>
+  <text x="140" y="202" text-anchor="middle" font-size="12" fill="#495057">Vercel · localStorage JWT</text>
+  <text x="140" y="220" text-anchor="middle" font-size="12" fill="#495057">Axios</text>
+
+  <!-- Backend -->
+  <rect x="340" y="140" width="220" height="100" rx="10" fill="#f8f9fa" stroke="#212529" stroke-width="2"/>
+  <text x="450" y="175" text-anchor="middle" font-size="16" font-weight="bold" fill="#212529">Express API</text>
+  <text x="450" y="197" text-anchor="middle" font-size="12" fill="#495057">Render</text>
+  <text x="450" y="216" text-anchor="middle" font-size="12" fill="#495057">protect / adminOnly</text>
+  <text x="450" y="232" text-anchor="middle" font-size="12" fill="#495057">JWT middleware</text>
+
+  <!-- Database -->
+  <rect x="650" y="140" width="220" height="100" rx="10" fill="#f8f9fa" stroke="#212529" stroke-width="2"/>
+  <text x="760" y="180" text-anchor="middle" font-size="16" font-weight="bold" fill="#212529">MongoDB Atlas</text>
+  <text x="760" y="202" text-anchor="middle" font-size="12" fill="#495057">Mongoose</text>
+  <text x="760" y="220" text-anchor="middle" font-size="12" fill="#495057">Book / User collections</text>
+
+  <!-- Arrow frontend -> backend -->
+  <line x1="250" y1="190" x2="335" y2="190" stroke="#212529" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="292" y="155" text-anchor="middle" font-size="12" fill="#212529">HTTPS + JWT</text>
+  <text x="292" y="242" text-anchor="middle" font-size="12" fill="#212529">JSON response</text>
+
+  <!-- Arrow backend -> db -->
+  <line x1="560" y1="190" x2="645" y2="190" stroke="#212529" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="602" y="155" text-anchor="middle" font-size="12" fill="#212529">queries</text>
+  <text x="602" y="242" text-anchor="middle" font-size="12" fill="#212529">documents</text>
+
+  <!-- Auth flow note -->
+  <text x="450" y="300" text-anchor="middle" font-size="13" fill="#495057">Login/Register issue a signed JWT (7 day expiry). The frontend stores it and</text>
+  <text x="450" y="320" text-anchor="middle" font-size="13" fill="#495057">sends it on every request; the backend verifies it and checks the user's role</text>
+  <text x="450" y="340" text-anchor="middle" font-size="13" fill="#495057">before allowing access to protected or admin-only routes.</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#212529"/>
+    </marker>
+  </defs>
+</svg>
