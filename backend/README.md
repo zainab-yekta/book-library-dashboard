@@ -127,6 +127,8 @@ Basic unit tests are written with **Jest** and **Supertest** for key routes:
 - `/api/users/login` – invalid login returns 401
 - Protected routes – unauthenticated access is blocked
 
+Tests run against a temporary in-memory MongoDB instance (`mongodb-memory-server`), not the real database, no setup or `.env` needed to run them.
+
 To run tests:
 ```bash
 npm test

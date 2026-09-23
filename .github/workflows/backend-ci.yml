@@ -38,9 +38,6 @@ jobs:
 
       - name: Run tests
         run: npm test
-        env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: Build Docker image
         run: docker build --target production -t book-library-backend .

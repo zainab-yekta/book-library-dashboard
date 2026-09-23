@@ -4,7 +4,6 @@ Rough list of what would make this project stronger, grouped by how much effort 
 
 ## Testing
 
-- Point backend tests at an in-memory database (`mongodb-memory-server`) instead of the real one, so `npm test` can't touch production data.
 - Add coverage for registration, book CRUD, and the admin-only routes, right now only three assertions exist.
 - Add a handful of frontend component tests since Testing Library is already installed and unused.
 

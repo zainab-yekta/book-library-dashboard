@@ -22,8 +22,10 @@ This is a working full-stack project (React frontend, Node/Express backend, Mong
 - **Added Docker support**: a multi-stage `Dockerfile` in `backend/` and `frontend/` (a `dev` stage for local work, a `production` stage that builds a real deployable image, nginx for the frontend, plain `node` for the backend), plus a root `docker-compose.yml` that runs MongoDB, the backend, and the frontend together for local development against the `dev` stage. Both CI workflows now also run `docker build --target production` so a broken image gets caught before it ever reaches a deploy. Not runtime-tested here since Docker isn't installed in this environment, worth a quick `docker compose up` on your end to confirm it starts cleanly.
 - **CI didn't actually gate anything.** `backend-ci.yml` only ran lint, never tests, and `deploy-backend.yml` deployed to Render on every push to `main` regardless of whether CI passed. `frontend-ci.yml` deployed to Vercel *before* running its lint step, and that lint step was silently broken anyway (the frontend had no `lint` script, so `npm run lint` always failed). Fixed: backend CI now runs tests, the Render deploy only fires after backend CI succeeds on `main`, the frontend now has a working lint script, lint runs before the Vercel deploy, and that deploy step is restricted to `main`.
 - **Added an architecture diagram** (`docs/architecture.svg`), a **Known Limitations** section, and a preview GIF, all now in the main README.
+- **The backend's lint step was silently broken.** `npx eslint .` always pulls the latest ESLint version since it was never pinned as a dependency, and ESLint v9+ requires a new-style `eslint.config.js` file that the backend never had. This meant the lint step failed on every single CI run. It never mattered before because the old deploy workflow deployed regardless of CI result, but once deploy was gated on CI passing, this pre-existing gap started blocking every deploy. Added a minimal `backend/eslint.config.js` and confirmed `npm run lint` passes.
+- **Tests hit the live database.** `backend/tests/*.test.js` used to connect straight to `MONGO_URI`, which meant CI needed real Atlas credentials as GitHub secrets, and test runs could touch production data. Added `mongodb-memory-server`: a `globalSetup`/`globalTeardown` pair now spins up a temporary, in-memory MongoDB instance for the test run and tears it down after, with a throwaway `JWT_SECRET` set alongside it. No real database, no GitHub secrets, and no cost, needed for tests to pass. Confirmed locally: all 3 tests pass with no `.env` present at all.
 
-These were small, low-risk changes that match the existing code style, no new dependencies or architecture changes beyond Docker and the CI wiring itself.
+These were small, low-risk changes that match the existing code style, no new dependencies or architecture changes beyond Docker, the CI wiring, and the in-memory test database.
 
 ## Needs your action (can't be done for you)
 
@@ -31,18 +33,16 @@ These were small, low-risk changes that match the existing code style, no new de
 - **Update the `JWT_SECRET` on Render** to match (or replace) the new value, if you want the deployed backend to use it.
 - **Consider scrubbing git history** of the old `.env` commits (tools like `git filter-repo` or GitHub's own guide for removing sensitive data) if you want the old credentials gone from the repo entirely, not just from the current snapshot. This rewrites history and needs a force-push, so it's optional and worth doing carefully.
 - `completed Tasks.txt` and `BACKEND SUMMARY.docx` in the repo root are personal working notes, one of them has plaintext credentials and a real JWT in it. They were never committed to git, but they're sitting on disk next to a public repo. Worth moving somewhere private or deleting once you've pulled anything useful out of them.
-- **Add `MONGO_URI` and `JWT_SECRET` as GitHub Actions repository secrets** (Settings → Secrets and variables → Actions). The new backend test step needs them to connect to a database in CI, without them, `backend-ci.yml` will fail on the test step.
+- **The live backend still needs a real database to actually serve users.** The in-memory database above only covers CI tests. What broke the live site is that the MongoDB Atlas cluster's hostname no longer resolves at all (`ENOTFOUND`), consistent with a time-limited trial ending rather than the free tier itself expiring, Atlas's M0 tier is free indefinitely, not a trial. Recreating a free M0 cluster and updating `MONGO_URI` (locally, and in Render's environment variables) is the fix, this needs your own Atlas login.
 
 ## Still open
 
 - **No server-side validation beyond "field is required."** No rate limiting, no `helmet`, no central error handler.
-- **Tests hit the live database.** `backend/tests/*.test.js` connect straight to `MONGO_URI`, there's no separate test database or in-memory Mongo. Coverage is thin too: three assertions total, nothing for register, book CRUD, or admin routes.
-- **No frontend tests**, even though Testing Library is installed as a dependency.
-- **The live backend is currently down** because the MongoDB Atlas free-tier cluster's trial period expired. This is why the mockups in this pass were built as static pages instead of screenshots of the running app, that's a billing/account issue on the Atlas side, not a code problem, and needs your login to resolve (renew the cluster or spin up a new free-tier one and update `MONGO_URI`).
+- **No frontend tests**, even though Testing Library is installed as a dependency. Backend test coverage is also still thin, three assertions total, nothing for register, book CRUD, or admin routes.
 - **Create React App is deprecated upstream** and Express 5 is a fairly recent major version. Neither is broken today, but both are worth keeping in mind if you revisit the stack later.
 
 See [EXPANSION_IDEAS.md](EXPANSION_IDEAS.md) for how to approach these.
 
 ## Bottom line
 
-Nothing here is a dealbreaker for a portfolio piece. The urgent gaps (`.env`/`node_modules` tracking, open CORS, the under-protected admin route, dead code) are closed. What's left is either a bigger effort (real test coverage) or a one-time account action only you can do (rotating the Mongo password).
+Nothing here is a dealbreaker for a portfolio piece. The urgent gaps (`.env`/`node_modules` tracking, open CORS, the under-protected admin route, dead code, the broken CI gates) are closed, and CI no longer depends on any paid service or secret. What's left is either a bigger effort (real test coverage) or account actions only you can do (rotating the Mongo password, recreating the Atlas cluster).
