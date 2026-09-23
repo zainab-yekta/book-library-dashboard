@@ -158,6 +158,18 @@ npm start
 
 ---
 
+## Running with Docker
+
+If you have Docker installed, you can skip the manual setup above:
+
+```bash
+docker compose up
+```
+
+This starts MongoDB, the backend (port 5000), and the frontend (port 3000) together. Code changes on your machine are picked up automatically. Stop everything with `docker compose down`.
+
+---
+
 ## Author
 
 Built by **Zeinab Ramezani Yekta** — Full-Stack Developer  

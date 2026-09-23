@@ -35,3 +35,9 @@ jobs:
           else
             echo "No lint script found, skipping."
           fi
+
+      - name: Run tests
+        run: npm test
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}

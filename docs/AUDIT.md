@@ -17,9 +17,12 @@ This is a working full-stack project (React frontend, Node/Express backend, Mong
 - **Two versions of book creation existed.** The unused `createBook` controller and the duplicate inline version in `bookRoutes.js` are now one: the route calls the controller.
 - **Stray `console.log` calls and commented-out dead code** in `authMiddleware.js`, `bookController.js`, `userRoutes.js`, `HomePage.js`, `LoginPage.js`, and `RegisterPage.js` are cleaned up.
 - **Added `.env.example`** for both `frontend` and `backend`.
-- **The backend README's routes/middleware list didn't match the code** (documented an `/api/auth` prefix, `adminMiddleware`, `errorHandler`, `morgan`, none of which exist). Updated it to reflect the real routes and middleware.
+- **The backend README's routes/middleware list didn't match the code** (documented an `/api/auth` prefix, `adminMiddleware`, `errorHandler`, `morgan`, none of which exist). Updated it to reflect the real routes and middleware, also fixed a broken folder tree, a typo, and an unclosed code fence.
+- **The frontend README had a few of its own inaccuracies**: two wrong component filenames, a "fake login" feature that isn't real, and a "toasts are done" claim when the code still uses plain `alert()` calls. Corrected.
+- **Added Docker support**: a `Dockerfile` in `backend/` and `frontend/`, plus a root `docker-compose.yml` that runs MongoDB, the backend, and the frontend together for local development. Not runtime-tested here since Docker isn't installed in this environment, worth a quick `docker compose up` on your end to confirm it starts cleanly.
+- **CI didn't actually gate anything.** `backend-ci.yml` only ran lint, never tests, and `deploy-backend.yml` deployed to Render on every push to `main` regardless of whether CI passed. `frontend-ci.yml` deployed to Vercel *before* running its lint step, and that lint step was silently broken anyway (the frontend had no `lint` script, so `npm run lint` always failed). Fixed: backend CI now runs tests, the Render deploy only fires after backend CI succeeds on `main`, the frontend now has a working lint script, lint runs before the Vercel deploy, and that deploy step is restricted to `main`.
 
-These were small, low-risk changes that match the existing code style, no new dependencies or architecture changes.
+These were small, low-risk changes that match the existing code style, no new dependencies or architecture changes beyond Docker and the CI wiring itself.
 
 ## Needs your action (can't be done for you)
 
@@ -27,6 +30,7 @@ These were small, low-risk changes that match the existing code style, no new de
 - **Update the `JWT_SECRET` on Render** to match (or replace) the new value, if you want the deployed backend to use it.
 - **Consider scrubbing git history** of the old `.env` commits (tools like `git filter-repo` or GitHub's own guide for removing sensitive data) if you want the old credentials gone from the repo entirely, not just from the current snapshot. This rewrites history and needs a force-push, so it's optional and worth doing carefully.
 - `completed Tasks.txt` and `BACKEND SUMMARY.docx` in the repo root are personal working notes, one of them has plaintext credentials and a real JWT in it. They were never committed to git, but they're sitting on disk next to a public repo. Worth moving somewhere private or deleting once you've pulled anything useful out of them.
+- **Add `MONGO_URI` and `JWT_SECRET` as GitHub Actions repository secrets** (Settings → Secrets and variables → Actions). The new backend test step needs them to connect to a database in CI, without them, `backend-ci.yml` will fail on the test step.
 
 ## Still open
 
