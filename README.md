@@ -63,6 +63,7 @@ Users can register, log in, add personal books, browse public books, and manage 
 | Book Ownership Metadata | ✅ Done | Tracks which user added each book |
 | Automated Testing | ✅ Done | Jest + Supertest for key API routes |
 | CI/CD Pipeline | ✅ Done | GitHub Actions for lint, test, and auto-deploy |
+| Docker Support | ✅ Done | Docker Compose for local dev, multi-stage production images |
 
 ---
 

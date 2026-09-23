@@ -7,7 +7,9 @@ services:
       - mongo-data:/data/db
 
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      target: dev
     ports:
       - "5000:5000"
     environment:
@@ -21,7 +23,9 @@ services:
       - mongo
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      target: dev
     ports:
       - "3000:3000"
     environment:

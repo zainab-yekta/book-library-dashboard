@@ -33,6 +33,9 @@ jobs:
       - name: Run Linter
         run: npm run lint
 
+      - name: Build Docker image
+        run: docker build --target production -t book-library-frontend .
+
       - name: Trigger Vercel Deploy
         if: github.ref == 'refs/heads/main'
         run: |
