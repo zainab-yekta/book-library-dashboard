@@ -20,43 +20,39 @@ This is the **backend** for the Book Library Dashboard project, developed using 
 
 ### Admin APIs
 
-* View all books (global and user-added)
-* Toggle book visibility (public/private)
-* View user submissions with counts
-* Separate admin routes using `adminRoutes.js`
-* Allow admin users to manage global books
-* Displaying global stats / controls for admin 
-* Admin only: change the Add, Delete, Edite and Filters to (Public Books, Private Books)
+* View all books (global and user-submitted)
+* Toggle a book's public/private visibility
+* View global stats: total books, public books, user books, total users
+* View user-submitted books with per-user counts
 
 ## Folder Structure (Backend)
 
 ```
 backend/
 ├── config/
-│   ├── db.js
+│   └── db.js
 ├── controllers/
 │   ├── userController.js
 │   ├── bookController.js
 │   └── adminController.js
 ├── data/
-├    └── BooksData.js
+│   └── booksData.js
 ├── middleware/
-│   ├── authMiddleware.js
+│   └── authMiddleware.js
 ├── models/
 │   ├── Book.js
 │   └── User.js
-├── node_modules/
 ├── routes/
 │   ├── userRoutes.js
 │   ├── bookRoutes.js
 │   └── adminRoutes.js
 ├── tests/
-│   └── bookRoutes.test.js
+│   ├── bookRoutes.test.js
 │   └── userRoutes.test.js
 ├── uploads/
-├── .env
+├── .env.example
 ├── index.js
-├── seed.js
+└── seed.js
 ```
 
 ## Technologies Used
@@ -99,9 +95,8 @@ backend/
 * **nodemon** for auto-restart
 * **eslint** for linting
 
-## Aditional Features Added
+## Additional Features Added
 
-* Add loading spinner and toast feedback
 * Deploy to Render (backend)
 * GitHub CI/CD with Actions
 
@@ -135,3 +130,4 @@ Basic unit tests are written with **Jest** and **Supertest** for key routes:
 To run tests:
 ```bash
 npm test
+```

@@ -9,7 +9,6 @@ This is the **frontend** part of the Book Library Dashboard project built with *
 ### 🔐 Authentication
 
 * Login and registration system using JWT
-* Fake login for demo users
 * Protected routes using `UserContext`
 
 ### 🧑‍💼 Role-Based UI
@@ -46,7 +45,8 @@ This is the **frontend** part of the Book Library Dashboard project built with *
 * `BookForm.js`
 * `BookList.js`
 * `EditBookModal.js`
-* `FilterBar` (inline or componentized)
+* `AdminBookManager.js`
+* `AdminStats.js`
 
 ### 🧠 React Features
 
@@ -71,8 +71,8 @@ frontend/
 │   │   ├── EditBookModal.js
 │   │   └── AdminBookManager.js
 │   │   └── AdminStats.js
-│   │   └── Navebar.js
-│   │   └── PrivateAdmnRoute.js
+│   │   └── Navbar.js
+│   │   └── PrivateAdminRoute.js
 │   │   └── PrivateRoute.js
 │   ├── context/
 │   │   └── UserContext.js
@@ -106,6 +106,6 @@ frontend/
 ## 🔮 Future Features
 
 * Loading spinners while fetching data (Done)
-* Success/error toasts instead of alert boxes (Done)
-* Deployment to Netlify/Vercel 
+* Success/error toasts instead of plain alert boxes and inline messages
+* Deployment to Vercel (Done)
 * GitHub CI/CD workflows (Done)
