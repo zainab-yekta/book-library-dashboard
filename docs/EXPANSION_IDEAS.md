@@ -2,17 +2,6 @@
 
 Rough list of what would make this project stronger, grouped by how much effort each one takes. Pick what fits the time you have, none of this needs to happen at once.
 
-## Quick wins (done)
-
-These were small enough to just fix directly rather than leave as a suggestion:
-
-- CORS is now restricted to the deployed frontend origins (plus `localhost:3000` for local dev) instead of allowing any origin.
-- `/api/admin/stats` now requires `adminOnly`, not just `protect`.
-- The duplicate inline book-creation logic in `bookRoutes.js` is gone, the route now calls the existing `createBook` controller.
-- Leftover `console.log` calls and commented-out dead code are cleaned up across the backend and the frontend pages.
-- Added `.env.example` for both `frontend` and `backend`.
-- Updated the backend README so its routes and middleware list match the actual code.
-
 ## Testing
 
 - Point backend tests at an in-memory database (`mongodb-memory-server`) instead of the real one, so `npm test` can't touch production data.
@@ -28,8 +17,6 @@ These were small enough to just fix directly rather than leave as a suggestion:
 - Ratings or a simple "want to read / reading / finished" status per book.
 - A real About page instead of the current placeholder heading.
 
-## Infrastructure and developer experience
+## Build tooling
 
-- **Done:** added `docker-compose.yml` plus a `Dockerfile` in `frontend/` and `backend/`, so `docker compose up` starts MongoDB, the backend, and the frontend together, no local Node/Mongo install needed. See the "Running with Docker" section in the main README.
-- **Done:** CI now actually gates deploys. `backend-ci.yml` runs the test suite (it only ran lint before), and `deploy-backend.yml` triggers off that workflow succeeding instead of firing on every push to main regardless. `frontend-ci.yml` now runs lint before the Vercel deploy step instead of after, and the deploy step only fires on `main`. The frontend also had no `lint` script at all, added one, so that gate was previously a no-op.
-- **Deliberately skipped for now:** migrating off Create React App to Vite, and adding TypeScript. Both are real migrations rather than small fixes (env variable renames, config swaps, or a gradual file-by-file conversion), so they're left here as future options rather than done alongside the small stuff.
+Create React App still works fine here, but it's no longer maintained upstream. Moving to Vite is mostly a build-tooling swap rather than a rewrite, it would mean renaming the `REACT_APP_*` env variables to `VITE_*` and updating a few config files. TypeScript is worth considering too, for stronger guarantees around the book and user shapes as the app grows. Neither is urgent, both are reasonable to pick up later.

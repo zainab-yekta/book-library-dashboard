@@ -24,24 +24,24 @@ Users can register, log in, add personal books, browse public books, and manage 
 ## Tech Stack
 
 ### Frontend
-- **React.js** — component-based UI
-- **React Router DOM** — client-side navigation
-- **React Bootstrap** — responsive styling
-- **Axios** — API communication
+- **React.js**: component-based UI
+- **React Router DOM**: client-side navigation
+- **React Bootstrap**: responsive styling
+- **Axios**: API communication
 
 ### Backend
-- **Node.js + Express.js** — RESTful API server
-- **MongoDB + Mongoose** — database and schema modeling
-- **JWT (jsonwebtoken)** — stateless authentication
-- **bcryptjs** — password hashing
+- **Node.js + Express.js**: RESTful API server
+- **MongoDB + Mongoose**: database and schema modeling
+- **JWT (jsonwebtoken)**: stateless authentication
+- **bcryptjs**: password hashing
 
 ### Dev & DevOps
-- **Jest + Supertest** — automated backend testing
-- **GitHub Actions** — CI/CD pipelines (lint, test, deploy)
-- **Docker + Docker Compose** — containerized local development
-- **Vercel** — frontend hosting
-- **Render** — backend hosting
-- **Postman** — manual API validation
+- **Jest + Supertest**: automated backend testing
+- **GitHub Actions**: CI/CD pipelines (lint, test, deploy)
+- **Docker + Docker Compose**: containerized local development
+- **Vercel**: frontend hosting
+- **Render**: backend hosting
+- **Postman**: manual API validation
 
 ---
 
@@ -79,9 +79,9 @@ Users can register, log in, add personal books, browse public books, and manage 
 
 ### Automated (Jest + Supertest)
 Key backend routes tested:
-- `GET /api/books/public` — returns public book list
-- `POST /api/users/login` — invalid credentials return 401
-- Protected routes — unauthenticated requests are blocked
+- `GET /api/books/public`: returns public book list
+- `POST /api/users/login`: invalid credentials return 401
+- Protected routes: unauthenticated requests are blocked
 
 ```bash
 cd backend
@@ -196,5 +196,5 @@ This project is still evolving, a few gaps worth knowing about:
 
 ## Author
 
-Built by **Zeinab Ramezani Yekta** — Full-Stack Developer  
+Built by **Zeinab Ramezani Yekta**, Full-Stack Developer  
 [LinkedIn](https://linkedin.com/in/zeinab-ramezani) · [GitHub](https://github.com/zainab-yekta)
