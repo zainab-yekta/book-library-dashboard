@@ -132,7 +132,7 @@ book-library-dashboard/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/zainab-yekta/book-library-dashboard.git
+git clone https://github.com/zeinab-r-yekta/book-library-dashboard.git
 cd book-library-dashboard
 ```
 
@@ -197,4 +197,4 @@ This project is still evolving, a few gaps worth knowing about:
 ## Author
 
 Built by **Zeinab Ramezani Yekta**, Full-Stack Developer  
-[LinkedIn](https://linkedin.com/in/zeinab-ramezani) · [GitHub](https://github.com/zainab-yekta)
+[LinkedIn](https://linkedin.com/in/zeinab-ramezani) · [GitHub](https://github.com/zeinab-r-yekta)
